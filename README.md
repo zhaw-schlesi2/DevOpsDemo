@@ -8,7 +8,7 @@ DevOps Prototype
 ## Required Tools
 * Git (https://git-scm.com/)
 * Node and NPM (https://nodejs.org/)
-* Java SDK 12 (https://www.oracle.com/java/technologies/javase-jdk12-doc-downloads.html)
+* Java SDK 17 (https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
 
 ## Installation
 * Clone repository with Git
