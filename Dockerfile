@@ -11,7 +11,7 @@ COPY . .
 RUN cd frontend && npm install
 RUN cd frontend && npm run build
 RUN cd backend && chmod +x gradlew
-RUN cd backend && ./gradlew stage
+RUN cd backend && ./gradlew build
 
 EXPOSE 4567
 CMD ["java", "-cp", "/usr/src/app/backend/build/libs/devops-all.jar", "ch.zhaw.iwi.devops.Main"]
