@@ -8,6 +8,7 @@ WORKDIR /usr/src/app
 
 COPY . .
 
+RUN export NODE_OPTIONS=--openssl-legacy-provider
 RUN cd frontend && npm install
 RUN cd frontend && npm run build
 RUN cd backend && chmod +x gradlew
