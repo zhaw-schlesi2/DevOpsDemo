@@ -14,5 +14,5 @@ RUN cd frontend && npm run build
 RUN cd backend && chmod +x gradlew
 RUN cd backend && ./gradlew build
 
-EXPOSE 4567
-CMD ["java", "-cp", "/usr/src/app/backend/build/libs/devops-all.jar", "ch.zhaw.iwi.devops.Main"]
+EXPOSE 8080
+CMD ["java", "-cp", "/usr/src/app/backend/build/libs/demo-0.0.1-SNAPSHOT.jar", "ch.zhaw.iwi.devops.demo.DemoApplication"]
