@@ -17,5 +17,7 @@ RUN rm -r frontend
 RUN cd backend && chmod +x gradlew
 RUN cd backend && ./gradlew build
 
+RUN chown -R root:root /*
+
 EXPOSE 8080
 CMD ["java", "-jar", "/usr/src/app/backend/build/libs/demo-0.0.1-SNAPSHOT.jar"]
