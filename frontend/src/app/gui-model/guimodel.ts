@@ -53,99 +53,21 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "UserForm",
-                    "title": "User",
-                    "url": "/user",
-                    "formFieldList": [
-                        {
-                            "id":   "lastName",
-                            "type": "text",
-                            "name": "FamilyName",
-                            "newRow": true,
-                            "required": true
-                        },
-                        {
-                            "id":   "firstName",
-                            "type": "text",
-                            "name": "FirstName",
-                            "required": true
-                        },
-                        {
-                            "id":   "email",
-                            "type": "text",
-                            "name": "EMail",
-                            "width": 2,
-                            "required": true
-                        },
-                        {
-                            "id":   "password",
-                            "type": "text",
-                            "name": "Password",
-                            "newRow": true,
-                            "width": 2,
-                            "isPassword": true,
-                            "required": true
-                        },
-                        {
-                            "id":   "repeatPassword",
-                            "type": "text",
-                            "name": "RepeatPassword",
-                            "newRow": true,
-                            "width": 2,
-                            "isPassword": true,
-                            "required": true
-                        },
-                        {
-                            "id": "evtCreationDate",
-                            "type": "date",
-                            "name": "CreationDate",
-                            "required": true,
-                            "newRow": true
-                        },
-                        {
-                            "id": "evtClosingDate",
-                            "type": "date",
-                            "name": "ClosingDate"
-                        },
-                        {
-                            "id": "comments",
-                            "type": "text",
-                            "name": "Comments",
-                            "newRow": true,
-                            "maxLength": 4000,
-                            "height": 4,
-                            "width": 2
-                        },
-                        {
-                            "type": "deleteButton",
-                            "name": "Delete"
-                        },
-                        {
-                            "type": "cancelButton",
-                            "name": "Cancel"
-                        },
-                        {
-                            "type": "okButton",
-                            "name": "Ok"
-                        }
-                    ]
-                },
-                {
-                    "id": "StudyProgramForm",
-                    "title": "StudyProgram",
-                    "url": "/studyProgram",
+                    "id": "ToDoForm",
+                    "title": { default: "ToDo" },
+                    "url": "/todo",
                     "formFieldList": [
                         {
                             "id":   "name",
                             "type": "text",
-                            "name": "Name",
+                            "name": { default: "Titel" },
                             "required": true,
                             "width": 2
                         },
                         {
                             "id": "description",
                             "type": "text",
-                            "name": "Description",
+                            "name": { default: "Text" },
                             "newRow": true,
                             "maxLength": 4000,
                             "height": 4,
@@ -195,7 +117,7 @@ export class GuiModel {
                         },
                         {
                             "type": "newButton",
-                            "name": "NewToDo",
+                            "name": { default: "Neues ToDo"},
                             "icon": "fa-user",
                             "color": "green",
                             "width": 2,
