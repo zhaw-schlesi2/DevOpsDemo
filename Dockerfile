@@ -15,4 +15,4 @@ RUN cd backend && chmod +x gradlew
 RUN cd backend && ./gradlew build
 
 EXPOSE 8080
-CMD ["java", "-cp", "/usr/src/app/backend/build/libs/demo-0.0.1-SNAPSHOT.jar", "ch.zhaw.iwi.devops.demo.DemoApplication"]
+CMD ["java", "-jar", "/usr/src/app/backend/build/libs/demo-0.0.1-SNAPSHOT.jar"]
