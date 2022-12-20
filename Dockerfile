@@ -11,7 +11,7 @@ COPY . .
 ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN cd frontend && npm install
 RUN cd frontend && npm run build
-RUN mv frontend/dist backend/src/main/resources/static
+RUN mv -v frontend/dist/* backend/src/main/resources/static/
 RUN cd backend && chmod +x gradlew
 RUN cd backend && ./gradlew build
 
