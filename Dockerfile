@@ -13,6 +13,7 @@ RUN cd frontend && npm install
 RUN cd frontend && npm run build
 RUN mv frontend/dist frontend/static
 RUN mv frontend/static backend/src/main/resources
+RUN rm -r frontend
 RUN cd backend && chmod +x gradlew
 RUN cd backend && ./gradlew build
 
