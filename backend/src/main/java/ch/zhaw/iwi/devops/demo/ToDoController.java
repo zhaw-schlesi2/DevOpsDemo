@@ -6,7 +6,12 @@ import java.util.List;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin
@@ -26,12 +31,12 @@ public class ToDoController {
     }
 
     @GetMapping("/test")
-    public String ping() {
+    public String test() {
         return "ToDo app is up and running!";
     }
 
     @GetMapping("/services/ping")
-    public String ping2() {
+    public String ping() {
         String languageCode = "de";
         return "{ \"status\": \"ok\", \"userId\": \"admin"+ "\", \"languageCode\": \"" + languageCode + "\",\"version\": \"0.0.1" + "\"}";
     }
@@ -53,5 +58,30 @@ public class ToDoController {
         }
         return result;
     }
+
+    @GetMapping("/services/todo/{key}")
+    public void getTodo(@PathVariable String key) {
+        System.out.println("GET");
+        System.out.println(key);
+    }
+
+    @PostMapping("/services/todo")
+    public void updateTodo(@RequestBody ToDo todo) {
+        System.out.println("POST");
+        System.out.println(todo);
+    }
+
+    @PutMapping("/services/todo")
+    public void createTodo(@RequestBody ToDo todo) {
+        System.out.println("PUT");
+        System.out.println(todo);
+    }
+
+    @DeleteMapping("/services/todo")
+    public void deleteTodo(@RequestBody ToDo todo) {
+        System.out.println("DELETE");
+        System.out.println(todo);
+    }
+
 
 }
