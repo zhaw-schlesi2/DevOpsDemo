@@ -8,7 +8,6 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN cd frontend && npm install
 RUN cd frontend && npm run build
 RUN mv frontend/dist frontend/static
