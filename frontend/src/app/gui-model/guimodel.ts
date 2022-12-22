@@ -3,7 +3,7 @@ export class GuiModel {
 
     private _guiModel = {
         "application": {
-            "title": "",
+            "title": "DevOpsDemo",
             "formList": [
                 {
                     "id": "OwnUserForm",
