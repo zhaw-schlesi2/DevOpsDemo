@@ -5,6 +5,9 @@ public class ToDo {
     private int id;
     private String title;
     private String description;
+
+    public ToDo() {
+    }
     
     public ToDo(int id, String title, String description) {
         this.id = id;
@@ -15,6 +18,10 @@ public class ToDo {
     public int getId() {
         return id;
     }    
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;

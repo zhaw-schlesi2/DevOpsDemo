@@ -58,7 +58,7 @@ export class GuiModel {
                     "url": "/todo",
                     "formFieldList": [
                         {
-                            "id":   "name",
+                            "id":   "title",
                             "type": "text",
                             "name": { default: "Titel" },
                             "required": true,

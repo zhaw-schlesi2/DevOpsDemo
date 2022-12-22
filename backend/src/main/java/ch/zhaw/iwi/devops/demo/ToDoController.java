@@ -1,7 +1,10 @@
 package ch.zhaw.iwi.devops.demo;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -18,15 +21,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ToDoController {
 
-    private List<ToDo> todos = new ArrayList<ToDo>();
+    private Map<Integer, ToDo> todos = new HashMap<Integer, ToDo>();
 
     @EventListener(ApplicationReadyEvent.class)
     public void init() {
-        this.todos.add(new ToDo(1, "Neuer Job", "DevOps Engineer einstellen"));
-        this.todos.add(new ToDo(2, "Geschäftsleitung", "Mit Präsentation von DevOps überzeugen"));
-        this.todos.add(new ToDo(3, "Unit Tests", "Neues Projekt mit Unit Tests starten"));
-        this.todos.add(new ToDo(4, "Deployment", "Jede Woche"));
-        this.todos.add(new ToDo(5, "Organigramm", "Löschen"));
+        this.todos.put(1,new ToDo(1, "Neuer Job", "DevOps Engineer einstellen"));
+        this.todos.put(2,new ToDo(2, "Geschäftsleitung", "Mit Präsentation von DevOps überzeugen"));
+        this.todos.put(3,new ToDo(3, "Unit Tests", "Neues Projekt mit Unit Tests starten"));
+        this.todos.put(4,new ToDo(4, "Deployment", "Jede Woche"));
+        this.todos.put(5,new ToDo(5, "Organigramm", "Löschen"));
         System.out.println("Init Data");
     }
 
@@ -49,7 +52,7 @@ public class ToDoController {
     @GetMapping("/services/todo")
     public List<PathListEntry<Integer>> todo() {
         var result = new ArrayList<PathListEntry<Integer>>();
-        for (var todo : this.todos) {
+        for (var todo : this.todos.values()) {
             var entry = new PathListEntry<Integer>();
             entry.setKey(todo.getId(), "todoKey");
             entry.setName(todo.getTitle());
@@ -60,27 +63,26 @@ public class ToDoController {
     }
 
     @GetMapping("/services/todo/{key}")
-    public void getTodo(@PathVariable String key) {
-        System.out.println("GET");
-        System.out.println(key);
+    public ToDo getTodo(@PathVariable Integer key) {
+        return this.todos.get(key);
     }
 
     @PostMapping("/services/todo")
-    public void updateTodo(@RequestBody ToDo todo) {
-        System.out.println("POST");
-        System.out.println(todo);
-    }
-
-    @PutMapping("/services/todo")
     public void createTodo(@RequestBody ToDo todo) {
-        System.out.println("PUT");
-        System.out.println(todo);
+        var newKey = this.todos.keySet().stream().max(Comparator.naturalOrder()).orElse(0) + 1;
+        todo.setId(newKey);
+        this.todos.put(newKey, todo);
     }
 
-    @DeleteMapping("/services/todo")
-    public void deleteTodo(@RequestBody ToDo todo) {
-        System.out.println("DELETE");
-        System.out.println(todo);
+    @PutMapping("/services/todo/{key}")
+    public void createTodo(@PathVariable Integer key, @RequestBody ToDo todo) {
+        todo.setId(key);
+        this.todos.put(key, todo);
+    }
+
+    @DeleteMapping("/services/todo/{key}")
+    public ToDo deleteTodo(@PathVariable Integer key) {
+        return this.todos.remove(key);
     }
 
 
