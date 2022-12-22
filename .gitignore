@@ -2,4 +2,3 @@
 .recommenders
 RemoteSystemsTempFiles
 .gradle
-**/generated/
