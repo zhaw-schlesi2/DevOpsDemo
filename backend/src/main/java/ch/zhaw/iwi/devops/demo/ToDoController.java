@@ -57,6 +57,7 @@ public class ToDoController {
             entry.setKey(todo.getId(), "todoKey");
             entry.setName(todo.getTitle());
             entry.getDetails().add(todo.getDescription());
+            entry.setTooltip(todo.getDescription());
             result.add(entry);
         }
         return result;
