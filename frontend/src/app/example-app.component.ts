@@ -3,20 +3,21 @@ import {Component, Type} from "@angular/core";
 import {PathAppComponent} from "path-framework/app/path-framework/path-app.component";
 import {PathService} from "path-framework/app/path-framework/service/path.service";
 import {TranslationService} from "path-framework/app/path-framework/service/translation.service";
+import {CustomPageElement} from "path-framework/app/path-framework/page/element/custom/custom-container.component";
 
 /* model imports */
+import * as handler from "./gui-model/form/handlers";
+import * as beans from "./gui-model/generated/forms";
 import {GuiModel} from "./gui-model/guimodel";
-import {DevOpsTranslationService} from "./devops-translation-service";
-import {OrderSummaryComponent} from "./custom-components/order-summary/order-summary-component";
-import {CustomPageElement} from "path-framework/app/path-framework/page/element/custom/custom-container.component";
+import {ExampleTranslationService} from "./example-translation-service";
+import {ExampleComponent} from "./custom/example.component";
 
 @Component({
     selector: "path-application",
     templateUrl: "./../../node_modules/path-framework/app/path-framework/path-app.component.html",
-    // providers: [{ provide: path.PathService, useClass: path.PathMockService }]
-    providers: [PathService, {provide: TranslationService, useClass: DevOpsTranslationService}]
+    providers: [PathService, {provide: TranslationService, useClass: ExampleTranslationService}]
 })
-export class DevOpsAppComponent extends PathAppComponent {
+export class ExampleAppComponent extends PathAppComponent {
 
     private _appConfig = new GuiModel();
 
@@ -29,20 +30,16 @@ export class DevOpsAppComponent extends PathAppComponent {
     }
 
     protected getStartPage(): string {
-        return "mainMenu";
-    }
-
-    protected getApplicationLogo(): string {
-        return null;
+        return "mainmenu";
     }
 
     protected getOwnUserForm(): string {
-        return "OwnUserForm";
+        return "UserForm";
     }
 
-    protected getGuiModel() {
+    public getGuiModel() {
         if (this._appConfig != null) {
-            return this._appConfig.getGuiModel();
+            return this._appConfig.guiModel;
         }
         return null;
     }
@@ -63,18 +60,20 @@ export class DevOpsAppComponent extends PathAppComponent {
         return url + "/services";
     }
 
+    protected getBeans() {
+        return beans;
+    }
+
+    protected getHandlers() {
+        return handler;
+    }
+
     protected getCustomComponentClass(componentType: string): Type<CustomPageElement> {
-        if (componentType === "OrderSummaryComponent") {
-            return OrderSummaryComponent;
+        if (componentType === "ExampleComponent") {
+            console.log("Path Example: " + componentType);
+            return <any>ExampleComponent;
         }
         return super.getCustomComponentClass(componentType);
     }
 
-    protected getBeans() {
-        return {};
-    }
-
-    protected getHandlers() {
-        return {};
-    }
 }

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "iwitask": {
+    "path-example": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,21 +17,8 @@
             "tsConfig": "src/tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "src/assets/",
-                "output": "/assets/",
-                "ignore": [
-                  "base/*",
-                  "css/*",
-                  "js/*"
-                ]
-              },
-              {
-                "glob": "**/*",
-                "input": "src/assets/base",
-                "output": "/"
-              }
+              "src/assets",
+              "src/favicon.ico"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -39,7 +26,7 @@
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "node_modules/@fortawesome/fontawesome-free/css/v4-shims.min.css",
               "node_modules/path-framework/styles.css",
-              "devops.css"
+              "src/path-example.css"
             ],
             "scripts": []
           },
@@ -48,7 +35,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
@@ -60,24 +46,37 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ]
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": {
+                "scripts": false,
+                "styles": false,
+                "fonts": false
+              },
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
-          }
+          },
+          "defaultConfiguration": "development"            
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "iwitask:build"
+            "browserTarget": "path-example:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "iwitask:build:production"
+              "browserTarget": "path-example:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "iwitask:build"
+            "browserTarget": "path-example:build"
           }
         },
         "test": {
@@ -93,40 +92,26 @@
               "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "node_modules/font-awesome/css/font-awesome.min.css",
               "node_modules/path-framework/styles.css",
-              "devops.css"
+              "src/path-example.css"
             ],
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "src/assets/",
-                "output": "/assets/",
-                "ignore": [
-                  "base/*",
-                  "css/*",
-                  "js/*"
-                ]
-              },
-              {
-                "glob": "**/*",
-                "input": "src/assets/base",
-                "output": "/"
-              }
+              "src/assets",
+              "src/favicon.ico"
             ]
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
-            ],
-            "exclude": []
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
-        }
+        }      
       }
     },
-    "iwitask-e2e": {
+    "path-example-e2e": {
       "root": "e2e",
       "sourceRoot": "e2e",
       "projectType": "application",
@@ -135,22 +120,25 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "iwitask:serve"
+            "devServerTarget": "path-example:serve"
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "e2e/tsconfig.e2e.json"
-            ],
-            "exclude": []
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
-        }
+        }      
       }
     }
   },
-  "defaultProject": "iwitask",
+  "defaultProject": "path-example",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  },
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

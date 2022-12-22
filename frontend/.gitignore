@@ -5,6 +5,7 @@
 /tmp
 server/**/*.js
 server/**/*.js.map
+/.angular
 
 # dependencies
 /node_modules
@@ -33,6 +34,7 @@ server/**/*.js.map
 npm-debug.log
 testem.log
 /typings
+/uploads
 
 # e2e
 /e2e/*.js

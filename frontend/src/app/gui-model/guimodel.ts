@@ -90,7 +90,7 @@ export class GuiModel {
             ],
             "pageList": [
                 {
-                    "id": "mainMenu",
+                    "id": "mainmenu",
                     "name": "MainMenu",
                     "elementList": [
                         {
@@ -143,7 +143,7 @@ export class GuiModel {
     };
 
 
-    getGuiModel() {
+    get guiModel() {
         return this._guiModel;
     }
 }
