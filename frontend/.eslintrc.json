@@ -44,7 +44,8 @@
         ],
         "@angular-eslint/no-host-metadata-property": [
           "warn"
-        ]
+        ],
+        "quotes": ["error", "double"]
       }
     },
     {
