@@ -63,27 +63,27 @@ public class ToDoController {
         return result;
     }
 
-    @GetMapping("/services/todo/{key}")
-    public ToDo getTodo(@PathVariable Integer key) {
-        return this.todos.get(key);
+    @GetMapping("/services/todo/{id}")
+    public ToDo getTodo(@PathVariable Integer id) {
+        return this.todos.get(id);
     }
 
     @PostMapping("/services/todo")
     public void createTodo(@RequestBody ToDo todo) {
-        var newKey = this.todos.keySet().stream().max(Comparator.naturalOrder()).orElse(0) + 1;
-        todo.setId(newKey);
-        this.todos.put(newKey, todo);
+        var newId = this.todos.keySet().stream().max(Comparator.naturalOrder()).orElse(0) + 1;
+        todo.setId(newId);
+        this.todos.put(newId, todo);
     }
 
-    @PutMapping("/services/todo/{key}")
-    public void createTodo(@PathVariable Integer key, @RequestBody ToDo todo) {
-        todo.setId(key);
-        this.todos.put(key, todo);
+    @PutMapping("/services/todo/{id}")
+    public void createTodo(@PathVariable Integer id, @RequestBody ToDo todo) {
+        todo.setId(id);
+        this.todos.put(id, todo);
     }
 
     @DeleteMapping("/services/todo/{key}")
-    public ToDo deleteTodo(@PathVariable Integer key) {
-        return this.todos.remove(key);
+    public ToDo deleteTodo(@PathVariable Integer id) {
+        return this.todos.remove(id);
     }
 
 
