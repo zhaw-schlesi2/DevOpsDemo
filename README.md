@@ -16,9 +16,8 @@ DevOps Prototype
 ```
 cd frontend
 npm install
-npm run ng build
+npm run dev
 ```
-Now all javascript files required for the frontend are built.
 
 ## Deployment
 * Open a console/terminal window and change directory to backend:
@@ -26,8 +25,8 @@ Now all javascript files required for the frontend are built.
 cd backend
 gradle run
 ```
-* You may check the backend is running by opening http://localhost:4567/services/ping in a web browser
-* You may check the frontend is running by opening http://localhost:4567/ in a web browser
+* You may check the backend is running by opening http://localhost:8080/services/ping in a web browser
+* You may check the frontend is running by opening http://localhost:4200/ in a web browser
 
 ## Options
 Some options may be set by using a environment variable or Java system property before executing the commands above:
