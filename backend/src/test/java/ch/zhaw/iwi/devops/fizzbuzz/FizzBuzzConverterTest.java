@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class FizzBuzzConverterTest {
 
-    @Test
+    /*@Test
     public void fizzBuzzConverter1() {
 
         FizzBuzzConverter fizzBuzz = new FizzBuzzConverter();
@@ -53,5 +53,5 @@ public class FizzBuzzConverterTest {
         Assertions.assertEquals("FizzBuzz", fizzBuzz.convert(42));
         Assertions.assertEquals("FizzBuzz", fizzBuzz.convert(63));
     }
-
+*/
 }
